@@ -1774,6 +1774,19 @@ static inline int is_ipaccess_bts(const struct gsm_bts *bts)
 	return 0;
 }
 
+/* Pretend to be an E1 bts (HACK, for debug only, needs to be removed when done!) */
+static inline int is_ipaccess_bts_e1(const struct gsm_bts *bts)
+{
+	switch (bts->type) {
+	case GSM_BTS_TYPE_NANOBTS:
+	case GSM_BTS_TYPE_OSMOBTS:
+		return 0;
+	default:
+		break;
+	}
+	return 0;
+}
+
 static inline int is_sysmobts_v2(const struct gsm_bts *bts)
 {
 	switch (bts->type) {
